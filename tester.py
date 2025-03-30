@@ -72,8 +72,7 @@ def test_dns_servers():
       i += 1
       if i <= 10:
         print(f"  {server} ({duration:.3f}s)")
-      for server, duration in results:
-        latency_file.write(f"{server} ({duration:.3f}s)\n")
+      latency_file.write(f"{server}\n")
 
 # MAIN FUNCTION
 def main():
