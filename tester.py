@@ -66,8 +66,14 @@ def test_dns_servers():
   results = [result for result in results if result is not None]
   results.sort(key=lambda x: x[1])
   print("\n  [ Fastest DNS Servers ]")
-  for server, duration in results[:10]:  # Display top 10 fastest servers
-    print(f"  {server} ({duration:.3f}s)")
+  i = 0
+  with open("dns-latency.list", "w") as latency_file:
+    for server, duration in results:
+      i += 1
+      if i <= 10:
+        print(f"  {server} ({duration:.3f}s)")
+      for server, duration in results:
+        latency_file.write(f"{server} ({duration:.3f}s)\n")
 
 # MAIN FUNCTION
 def main():
