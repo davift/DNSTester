@@ -10,8 +10,8 @@ import requests
 # FETCHING DNS LISTS
 def fetch_lists():
   print("[ Fetching DNS Lists ]", flush=True)
-  with open("dns-sources.list", "r") as sources_file:
-    sources = [line.strip() for line in sources_file if line.strip()]
+  with open("dns-sources.list", "r") as file:
+    sources = [line.strip() for line in file if line.strip()]
   servers = set()
   i = 0
   for source in sources:
@@ -26,13 +26,13 @@ def fetch_lists():
     if i % 100 == 0:
       print("\n", end="", flush=True)
   print("", flush=True)
-  with open("dns-unique.list", "w") as output_file:
+  with open("dns-unique.list", "w") as file:
     for dns_entry in sorted(servers):
       match = re.match(r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})', dns_entry)
       if match:
         server = match.group(1)
         if not (server.startswith("0.0.0.0") or server.startswith("10.") or server.startswith("172.16.") or server.startswith("172.31.") or server.startswith("192.168.")):
-          output_file.write(f"{server}\n")
+          file.write(f"{server}\n")
 
 # TESTING DNS SERVERS
 def dns_test(server):
@@ -67,12 +67,12 @@ def test_dns_servers():
   results.sort(key=lambda x: x[1])
   print("\n  [ Fastest DNS Servers ]")
   i = 0
-  with open("dns-latency.list", "w") as latency_file:
+  with open("dns-latency.list", "w") as file:
     for server, duration in results:
       i += 1
       if i <= 10:
         print(f"  {server} ({duration:.3f}s)")
-      latency_file.write(f"{server}\n")
+      file.write(f"{server}\n")
 
 # MAIN FUNCTION
 def main():
