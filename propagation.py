@@ -23,7 +23,7 @@ def server_group(source, domain):
     servers = [line.strip() for line in file if line.strip()]
   print("[ DNS Propagation Tester ]")
   results = []
-  with concurrent.futures.ThreadPoolExecutor(max_workers=(os.cpu_count()*10)) as executor:
+  with concurrent.futures.ThreadPoolExecutor(max_workers=(os.cpu_count()*32)) as executor:
     for i, result in enumerate(executor.map(resolution, servers, itertools.repeat(domain)), start=1):
       results.append(result)
       if result is not None:
