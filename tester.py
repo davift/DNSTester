@@ -54,7 +54,7 @@ def test_dns_servers():
     servers = [line.strip() for line in file if line.strip()]
   print("[ Testing DNS Servers ]")
   results = []
-  with concurrent.futures.ThreadPoolExecutor(max_workers=(os.cpu_count()*10)) as executor:
+  with concurrent.futures.ThreadPoolExecutor(max_workers=(os.cpu_count()*32)) as executor:
     for i, result in enumerate(executor.map(dns_test, servers), start=1):
       results.append(result)
       if result is not None:
