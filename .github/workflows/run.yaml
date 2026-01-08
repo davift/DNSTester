@@ -34,3 +34,4 @@ jobs:
           git add .
           git commit -m "Automated update."
           git push origin main
+          curl -m 10 --retry 3 -s https://hc-ping.com/deb1e775-77b4-49c7-bb6b-6ec9197e4ca1
