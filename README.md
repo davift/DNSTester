@@ -1,10 +1,12 @@
 # DNSTester
 
+[![DNSTester](https://healthchecks.io/b/2/665c2144-c2f2-4af3-8fa4-7c62c7801753.svg)](https://github.com/davift/DNSTester) ![Static Badge](https://img.shields.io/badge/Python-3-blue?style=flat&logo=Python)
+
 ![tester](https://github.com/davift/DNSTester/blob/main/image-tester.png)
 
 ![propagation](https://github.com/davift/DNSTester/blob/main/image-propagation.png)
 
-This tool aggregates multiple DNS sources, sorts them, and filters only the unique ones. Then, it tests if they effectively resolve domains and optionally evaluates their performance.
+This tool aggregates multiple DNS sources, sorts them, and filters only the unique ones. Then, it tests whether they effectively resolve domains and optionally evaluates their performance.
 
 - `dns-sources.list`
   - URLs of DNS sources.
