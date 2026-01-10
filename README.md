@@ -1,6 +1,6 @@
 # DNSTester
 
-[![DNSTester](https://healthchecks.io/b/2/665c2144-c2f2-4af3-8fa4-7c62c7801753.svg)](https://github.com/davift/DNSTester) ![Static Badge](https://img.shields.io/badge/Python-3-blue?style=flat&logo=Python)
+[![DNSTester](https://healthchecks.io/b/2/665c2144-c2f2-4af3-8fa4-7c62c7801753.svg)](https://github.com/davift/DNSTester) ![Static Badge](https://img.shields.io/badge/Python-blue?style=social&logo=Python)
 
 ![tester](https://github.com/davift/DNSTester/blob/main/image-tester.png)
 
