@@ -5,6 +5,7 @@ import time
 import os
 import re
 import argparse
+import ipaddress
 import requests
 
 # FETCHING DNS LISTS
@@ -31,8 +32,11 @@ def fetch_lists():
       match = re.match(r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})', dns_entry)
       if match:
         server = match.group(1)
-        if not (server.startswith("0.0.0.0") or server.startswith("10.") or server.startswith("172.16.") or server.startswith("172.31.") or server.startswith("192.168.")):
-          file.write(f"{server}\n")
+        try:
+          if ipaddress.ip_address(server).is_global:
+            file.write(f"{server}\n")
+        except ValueError:
+          continue
 
 # TESTING DNS SERVERS
 def dns_test(server):
@@ -54,7 +58,7 @@ def test_dns_servers():
     servers = [line.strip() for line in file if line.strip()]
   print("[ Testing DNS Servers ]")
   results = []
-  with concurrent.futures.ThreadPoolExecutor(max_workers=(os.cpu_count()*32)) as executor:
+  with concurrent.futures.ThreadPoolExecutor(max_workers=((os.cpu_count() or 1)*32)) as executor:
     for i, result in enumerate(executor.map(dns_test, servers), start=1):
       results.append(result)
       if result is not None:

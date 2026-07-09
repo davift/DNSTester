@@ -42,14 +42,18 @@ options:
 ## Usage - propagation.py
 
 ```
-usage: propagation.py [-h] --domain DOMAIN [--timeout TIMEOUT]
+usage: propagation.py [-h] [--all] [--geo] [--pop] domain
 
 DNS Propagation Checker
 
+positional arguments:
+  domain      Name to be resolved
+
 options:
-  -h, --help          show this help message and exit
-  --domain DOMAIN     Domain to check propagation for
-  --timeout TIMEOUT   Timeout in seconds for DNS queries (default: 5)
+  -h, --help  show this help message and exit
+  --all       Test against all DNS servers (dns-latency.list)
+  --geo       Only geographically located DNS (dns-geographic.list)
+  --pop       Only popular DNS services (dns-popular.list)
 ```
 
 ## Dependencies
